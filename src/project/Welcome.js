@@ -1,130 +1,114 @@
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity} from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Image } from 'react-native'
+import React from 'react'
 
-import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import LinearGradient from 'react-native-linear-gradient';
+
+const logo = require('../project/images/logo/kodein.png');
+const illustration = require('../project/images/illustration/1.png');
 
 const Welcome = ({ navigation }) => {
     return (
         <>
             <StatusBar hidden={true} />
-            <View style={styles.container}>
-                <Image 
-                    style={styles.img } 
-                    resizeMode={'contain'} 
-                    source={require('./images/logo/logo.png')}
+            <LinearGradient colors={['#ebedff', '#dee2ff', '#a8b2ff']} style={styles.container}>
+                <Image
+                    style={styles.logo}
+                    resizeMode={'contain'}
+                    source={logo}
                 />
-                <View style={styles.boxillustration}>
-                    <Image  
-                        style={styles.img2 } 
-                        resizeMode={'contain'} 
-                        source={require('./images/illustration/gambar.jpg')}
+                <View style={styles.boxIllustration}>
+                    <Image
+                        style={styles.illustration}
+                        resizeMode={'contain'}
+                        source={illustration}
                     />
-                    <Text style={styles.Text}>
-                        KODEIN
-                    </Text>
-                    <Text style={styles.Text2}>
-                        SEKOLAH DEVELOPER INDONESIA
-                    </Text>
+                    <Text style={styles.heading}>KODEIN</Text>
+                    <Text style={styles.description}>SEKOLAH DEVELOPER INDONESIA</Text>
                 </View>
                 <View style={styles.box3}>
                     <TouchableOpacity 
                         onPress={() => {
                             navigation.navigate(
-                                'Home',{
+                                'Home', {
                                     fullname: 'Sekolah Developer Indonesia'
                                 }
                             )
                         }}
                         style={styles.button}
                     >
-                        <Text style={styles.buttonText} >Selanjutnya</Text>
-                        <FontAwesome5
-                            style={styles.icon}
-                            size={26}
-                            name={'arrow-circle-right'}
-                            solid
+                        <Text style={styles.text}>Selanjutnya</Text>
+                        <FontAwesome5 
+                            style={styles.icon} 
+                            size={26} 
+                            name={'arrow-circle-right'} 
+                            solid 
                         />
                     </TouchableOpacity>
-                </View>                                   
-            </View>
+                </View>
+            </LinearGradient>
         </>
     )
-};
+}
 
-export default Welcome;
+export default Welcome
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#ffffff'
     },
-
-    Text: {
-        position: 'absolute',
-        bottom: 35,
+    logo: {
+        alignSelf:'center',
+        flex: 1,
+        width: 300,
+    },
+    boxIllustration: {
+        flex: 3,
+        alignSelf:'center',
+        position:'relative',
+    },
+    illustration: {
+        flex: 1,
+        width: 400,
+    },
+    heading: {
+        position:'absolute',
+        bottom:35,
         fontSize:35,
-        color: '#444444',
-        fontWeight: 'bold',
-        alignSelf: 'center',
+        color:'#313131',
+        fontFamily:'Poppins-ExtraBold',
+        alignSelf:'center',
     },
-
-    Text2: {
-        position: 'absolute',
+    description: {
+        position:'absolute',
         bottom:17,
-        fontSize: 18,
-        color: '#000000',
-        alignSelf: 'center',
+        fontSize:18,
+        color:'#414141',
+        fontFamily:'Poppins-Bold',
+        alignSelf:'center',
     },
-
     box3: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent:'center',
     },
-
-    bg: {
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-    },
-
-    img: {
-        height: 150,
-        width: 150,
-        marginVertical: 4,
-        borderRadius: 12,
-        alignSelf: "center"
-    },
-
-    img2: {
-        flex: 1,
-        width: 400
-    },
-
     button: {
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        alignItems: "center",
-        marginHorizontal: 32,
-        paddingVertical: 10,
+        justifyContent:'space-between',
+        alignItems:'center',
+        flexDirection:'row',
+        backgroundColor:'#149B8B',
+        marginHorizontal:32,
+        paddingVertical:10,
+        borderRadius:16,
         paddingHorizontal:16,
-        borderRadius: 106,
-        backgroundColor: '#59C1BD',
     },
-
-    buttonText: {
-        color: '#FFFFFF',
-        fontSize: 20
+    text: {
+        textAlign:'center',
+        color:'#FFFFFF',
+        fontFamily:'Poppins-Medium',
+        fontSize:16,
     },
-
-    boxillustration: {
-        flex: 3,
-        alignSelf: "center",
-        position: 'relative'
-    },
-
     icon: {
-        color: '#ffffff',
+        color:'#FFFFFF',
     }
-});
+})

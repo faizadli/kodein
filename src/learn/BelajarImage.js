@@ -1,23 +1,23 @@
-import { React } from "react";
+import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
 const BelajarImage = () => {
     return (
         <View style={styles.container}>
-            <Image
-                style={[styles.img, styles.mt30]} 
+            <Image 
+                style={[styles.img, styles.mt30]}
                 resizeMode={'contain'}
-                // source={require('../assets/img/wp.jpeg')}
+                source={require('../assets/images/img-1.jpg')}
             />
-            <Image
-                style={[styles.img, styles.mt20]} 
+            <Image 
+                style={[styles.img, styles.mt20]}
                 resizeMode={'contain'}
-                // source={require('../assets/img/wp.jpeg')}
+                source={require('../assets/images/img-2.jpg')}
             />
-            <Image
-                style={[styles.img, styles.mt20]} 
+            <Image 
+                style={[styles.img, styles.mt20]}
                 resizeMode={'contain'}
-                source={{uri: 'https://bit.ly/3BbSOJN'}}
+                source={{ uri: 'https://bit.ly/3BbSOJN' }}
             />
         </View>
     )
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     mt30: {
         marginTop:30,
     },
-})
+});
 
 export default BelajarImage;

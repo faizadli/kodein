@@ -1,91 +1,80 @@
-import { View, Text, Image, ScrollView, TouchableOpacity,StatusBar, StyleSheet, TextInput } from 'react-native'
+import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native'
 import React from 'react'
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { ImageSlider } from 'react-native-image-slider-banner';
+import { ImageSlider } from "react-native-image-slider-banner";
+
+const userPhoto = require('../project/images/user/arya-febiyan.png');
 
 const Home = ({ route }) => {
   const { fullname } = route.params;
-  
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={styles.container}
     >
-        <StatusBar hidden={true}/>
-        <View style={styles.container}>
-          <View styles={styles.topMenu}>
-            <View style={styles.topMenuUser}>
-              <View>
-                <Image 
-                  source={require('./images/user/userPhoto.png')}
-                  resizeMode={'contain'} 
-                  style={styles.topMenuUserPhoto}
-                />
-              </View>
-              <View style={styles.topMenuUserProfile}>
-                <Text style={styles.topMenuUserTitle}>FullstackDeveloper,</Text>
-                <Text style={styles.topMenuUserName}>Mochammad Faiz Adli</Text>
-              </View>
-            </View>
+      <StatusBar hidden={true} />
+      <View style={styles.container}>
+        <View style={styles.topMenu}>
+          <View style={styles.topMenuUser}>
             <View>
-              <TouchableOpacity style={styles.topMenuNotification}>
-                <FontAwesome5 
-                  style={styles.topMenuIconBell}
-                  size={20}
-                  name={'bell'}
-                  solid
-                />
-                <FontAwesome5 
-                  style={styles.topMenuIconCircle}
-                  size={10}
-                  name={'circle'}
-                  solid
-                />
-              </TouchableOpacity>
+              <Image source={userPhoto} resizeMode={'contain'} style={styles.topMenuUserPhoto} />
+            </View>
+            <View style={styles.topMenuUserProfile}>
+              <Text style={styles.topMenuUserTitle}>Fullstack Developer,</Text>
+              <Text style={styles.topMenuUserName}>{fullname}</Text>
             </View>
           </View>
-          <View style={styles.searchBox}>
-            <TextInput
-              placeholder='Search Tutorial'
-              style={styles.searchTextInput}
-            />
-          </View>
-          <ScrollView
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            style={styles.categoriesBoxScrollView}
-          >
-            <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
-              <Text style={styles.categoriesTitle}>Design</Text>
-            </View>
-            <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight, styles.categoriesBoxActive]}>
-              <Text style={styles.categoriesTitleActive}>Multimedia</Text>
-            </View>
-            <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
-              <Text style={styles.categoriesTitle}>Programming</Text>
-            </View>
-            <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
-              <Text style={styles.categoriesTitle}>Database</Text>
-            </View>
-            <View style={[styles.categoriesBox]}>
-              <Text style={styles.categoriesTitle}>Networking</Text>
-            </View>
-          </ScrollView>
           <View>
-            <ImageSlider
-              data={[
-                {img: 'https://i.pinimg.com/736x/c4/5e/9c/c45e9c05471593b3014022f0dc10163f.jpg'},
-                {img: 'https://awsimages.detik.net.id/customthumb/2015/11/20/1146/JaewoonU1.jpg?w=750&q=90'},
-                {img: 'https://awsimages.detik.net.id/community/media/visual/2020/02/10/e086ec7c-82c6-4d5c-8d11-d969d602b162.jpeg?w=750&q=90'}
-              ]}
-              showHeader
-              autoPlay={true}
-              caroselImageStyle={{ resizeMode: 'contain' }}
-              onItemChanged={(item) => console.log("item", item)}
-              closeIconColor="#fff"
-            />
+            <TouchableOpacity style={styles.topMenuNotification}>
+              <FontAwesome5 style={styles.topMenuIconBell} size={20} name={'bell'} solid />
+              <FontAwesome5 style={styles.topMenuIconCircle} size={10} name={'circle'} solid />
+            </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.searchBox}>
+          <TextInput
+            placeholder="Search Tutorial"
+            style={styles.searchTextInput}
+          />
+        </View>
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+          style={styles.categoriesBoxScrollView}
+        >
+          <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
+            <Text style={styles.categoriesTitle}>Design</Text>
+          </View>
+          <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight, styles.categoriesBoxActive]}>
+            <Text style={styles.categoriesTitleActive}>Multimedia</Text>
+          </View>
+          <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
+            <Text style={styles.categoriesTitle}>Programming</Text>
+          </View>
+          <View style={[styles.categoriesBox, styles.categoriesBoxMarginRight]}>
+            <Text style={styles.categoriesTitle}>Database</Text>
+          </View>
+          <View style={styles.categoriesBox}>
+            <Text style={styles.categoriesTitle}>Networking</Text>
+          </View>
+        </ScrollView>
+        <View>
+          <ImageSlider 
+            data={[
+              {img: 'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg'},
+              {img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU'},
+              {img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg'}
+            ]}
+            showHeader
+            autoPlay={true}
+            caroselImageStyle={{ resizeMode: 'contain' }}
+            onItemChanged={(item) => console.log("item", item)}
+            closeIconColor="#fff"
+          />
+        </View>
+      </View>
     </ScrollView>
   )
 }
@@ -96,37 +85,39 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical:StatusBar.currentHeight,
     paddingHorizontal:12,
-    backgroundColor:'#ffffff',
+    backgroundColor:'#FFFFFF',
   },
-  topMenu:{
+  topMenu: {
     flexDirection:'row',
-    justifyContent: 'space-between',
+    justifyContent:'space-between',
     alignItems:'center',
+    // backgroundColor:'red',
   },
   topMenuUser: {
     flexDirection:'row',
     alignItems:'center',
   },
-  topMenuUserPhoto:{
+  topMenuUserPhoto: {
     width:39,
-    height:39
+    height:39,
   },
-  topMenuUserProfile:{
+  topMenuUserProfile: {
     paddingLeft:10,
   },
-  topMenuUserName:{
+  topMenuUserName: {
     fontSize:15,
     color:'#444444',
-    fontWeight: 'semi-bold',
+    fontFamily:'Poppins-SemiBold',
     lineHeight:18,
   },
   topMenuUserTitle: {
     fontSize:14,
     color:'#999999',
+    fontFamily:'Poppins-Regular',
     lineHeight:18,
   },
-  topMenuNotification:{
-    backgroundColor: '#DDDDDD',
+  topMenuNotification: {
+    backgroundColor:'#DDDDDD',
     paddingTop:6,
     paddingRight:9,
     paddingBottom:6,
@@ -134,11 +125,11 @@ const styles = StyleSheet.create({
     borderRadius:8,
     position:'relative',
   },
-  topMenuIconBell:{
-    color:'#ffffff',
+  topMenuIconBell: {
+    color:'#FFFFFF',
   },
-  topMenuIconCircle:{
-    color:'#ff0000',
+  topMenuIconCircle: {
+    color:'#FF0000',
     position:'absolute',
     top:3,
     right:4,
@@ -147,33 +138,36 @@ const styles = StyleSheet.create({
     marginVertical:20,
   },
   searchTextInput: {
-    backgroundColor:'#f2f4f8',
+    backgroundColor:'#F2F4F8',
     borderRadius:12,
     paddingHorizontal:16,
     fontSize:14,
     color:'#999999',
+    fontFamily:'Poppins-Regular',
   },
-  categoriesBoxScrollView:{
-
+  categoriesBoxScrollView: {
+    
   },
-  categoriesBox:{
+  categoriesBox: {
     justifyContent:'center',
   },
   categoriesBoxMarginRight: {
     marginRight:16,
   },
-  categoriesBoxActive:{
-    backgroundColor:'#7cd2e0',
+  categoriesBoxActive: {
+    backgroundColor:'#7CD2E0',
     borderRadius:12,
     fontSize:14,
     paddingHorizontal:16,
     paddingVertical:2,
   },
-  categoriesTitleActive:{
-    color:'#ffffff',
+  categoriesTitleActive: {
+    color:'#FFFFFF',
+    fontFamily:'Poppins-Regular',
     fontSize:14,
   },
-  categoriesTitle:{
+  categoriesTitle: {
     color:'#999999',
+    fontFamily:'Poppins-Regular',
   },
 })

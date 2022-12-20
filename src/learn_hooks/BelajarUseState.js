@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 
 const BelajarUseState = (props) => {
     const [counter, setCounter] = useState(1)
     return (
         <View style={styles.container}>
-            <TouchableOpacity
+            <TouchableOpacity 
                 style={styles.button}
                 onPress={() => setCounter(counter+1)}
             >
                 <Text style={styles.buttonText}>{props.title}</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.buttonReset}
+            <TouchableOpacity 
+                style={styles.button}
                 onPress={() => setCounter(0)}
             >
                 <Text style={styles.buttonText}>Reset</Text>
@@ -23,6 +23,8 @@ const BelajarUseState = (props) => {
         </View>
     )
 }
+
+export default BelajarUseState
 
 const styles = StyleSheet.create({
     container: {
@@ -35,36 +37,26 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         width:100,
-        height:40,
-        backgroundColor:'#F06292',
-        borderRadius:12,
-    },
-    buttonReset: {
-        justifyContent:'center',
-        alignItems:'center',
-        width:100,
-        height:40,
-        backgroundColor:'#9C254D',
+        height:30,
+        backgroundColor:'#0441BC',
         borderRadius:12,
     },
     buttonText: {
-        color: '#ffffff',
+        color:'#FFFFFF',
         fontWeight:'bold',
         fontSize:17,
     },
     box: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 150,
-        height: 150,
-        borderRadius: 150/2,
-        backgroundColor: "#000000",
+        justifyContent:'center',
+        alignItems:'center',
+        width:100,
+        height:100,
+        borderRadius:100/2,
+        backgroundColor:'#000000',
     },
     number: {
-        fontSize:40,
-        fontWeight: 'bold',
-        color: '#ffffff',
+        fontSize:30,
+        fontWeight:'bold',
+        color:'#FFFFFF',
     }
-});
-
-export default BelajarUseState;
+})

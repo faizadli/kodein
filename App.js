@@ -1,36 +1,48 @@
-import React from "react"; 
+import React from "react";
 import { View, Text } from "react-native";
-import BelajarProps from "./src/learn/BelajarProps";
-import Latihan2 from "./src/learn/latihan2";
-import BelajarUseState from "./src/learn/BelajarUseState";
-import BelajarImage from "./src/learn/BelajarImage";
-import BelajarImageBackground from "./src/learn/BelajarImageBackground";
-import BelajarScrollView from "./src/learn/BelajarScrollView";
-import ExamNative from "./src/learn/ExamNative";
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import Welcome from "./src/project/Welcome";
 import Home from "./src/project/Home";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Login from "./src/project/Login";
+import Register from "./src/project/Register";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
+
+  const Root = () => {
+    return (
+      <Tab.Navigator 
+        screenOptions={{ 
+          headerShown: false, 
+          tabBarShowLabel: false,
+        }}
+      >
+        <Tab.Screen name="Login" component={Login} options={{ tabBarIcon: ({focused}) => (
+          <View><Icon name={focused ? 'account-lock' : 'account-lock-outline'} size={25} style={{ color: '#4F4A4A' }} /></View>
+        ) }} />
+        <Tab.Screen name="Register" component={Register} options={{ tabBarIcon: ({focused}) => (
+          <View><Icon name={focused ? 'account-plus' : 'account-plus-outline'} size={25} style={{ color: '#4F4A4A' }} /></View>
+        ) }} />
+      </Tab.Navigator>
+    )
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
+
 }
 
 export default App;

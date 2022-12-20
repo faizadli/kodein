@@ -1,15 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const Latihan2 = (props) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>
-                {props.title}
-            </Text>
-            <Text style={styles.heading}>
-                {props.deskripsi}
-            </Text>
+            <View style={styles.box}></View>
+            <View style={styles.box}></View>
         </View>
     )
 }
@@ -17,16 +13,17 @@ const Latihan2 = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        justifyContent:'center',
+        justifyContent:'space-around',
         alignItems:'center',
-        backgroundColor: '#000000',
+        backgroundColor:'#FF0000',
+        flexDirection:'row',
     },
-    heading: {
-        fontSize:35,
-        textAlign: "center",
-        fontWeight:'bold',
-        color:'#909090',
-    }
+    box: {
+        width:100,
+        height:100,
+        borderRadius:100/2,
+        backgroundColor:'#000000'
+    },
 });
 
 export default Latihan2;
